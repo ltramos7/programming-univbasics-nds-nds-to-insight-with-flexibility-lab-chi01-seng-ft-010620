@@ -3,7 +3,11 @@ require 'spec_helper'
 describe 'provided method' do
   describe 'flatten_a_o_a' do
     it 'flattens an a_a_a of Integers' do
-      expect(flatten_a_o_a([[1,2],[3,4,5],[6]])).to eq([1,2,3,4,5,6])
+      expect(
+        flatten_a_o_a([[1,2],[3,4,5],[6]])
+      ).to eq(
+        [1,2,3,4,5,6]
+      )
     end
   end
 
@@ -24,10 +28,16 @@ describe 'provided method' do
 end
 
 describe 'movies_with_director_key' do
-  it 'adds a :director_name key an AoH of movies' do
+  it 'adds a :director_name key an "array of hashes" of movies' do
     dir_name = "Byron Poodle"
-    test_set = [{:title => "TestA"}, {:title => "TestB"}]
+    test_set = [
+      {:title => "TestA"}, 
+      {:title => "TestB"}
+    ]
+    
+    
     updated_movies = movies_with_director_key(dir_name, test_set)
+    
     expect(updated_movies[0][:director_name]).to eq(dir_name), "Should add director name to each movie Hash"
     expect(updated_movies[1][:director_name]).to eq(dir_name), "Should add director name to each movie Hash"
   end
